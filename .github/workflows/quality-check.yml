@@ -1,0 +1,28 @@
+name: PM Quality Control
+
+# When should this run?
+on: [push]
+
+jobs:
+  # The name of the job
+  test-the-code:
+    # What computer should we rent? (Ubuntu is standard Linux)
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Step 1: Download the code from the repo
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      # Step 3: Run the test (Simulated)
+      - name: Run the Test Script
+        run: |
+          echo "Starting the test..."
+          python app.py
+          echo "Test Complete: The app runs without crashing!"
